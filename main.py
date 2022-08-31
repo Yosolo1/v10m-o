@@ -901,6 +901,23 @@ def onmessage(update,bot:ObigramClient):
                 bot.editMessageText(message,'🧐')
                 message = bot.sendMessage(update.message.chat.id,'⊷⚠️Error y posibles causas:\n1-Revise su Cuenta\n2-Servidor Desabilitado: '+client.path)
              pass
+        elif '/delete' in msgText:
+           try: 
+            enlace = msgText.split('/delete')[-1]
+            proxy = ProxyCloud.parse(user_info['proxy'])
+            client = MoodleClient(user_info['moodle_user'],
+                                   user_info['moodle_password'],
+                                   user_info['moodle_host'],
+                                   user_info['moodle_repo_id'],
+                                   proxy=proxy)
+            loged= client.login()
+            if loged:
+                #update.message.chat.id
+                deleted = client.delete(enlace)
+
+                bot.sendMessage(update.message.chat.id, "✅Archivo eliminado con exito...🗑️")
+            else: bot.sendMessage(update.message.chat.i, "🚷No se pudo loguear...")            
+           except: bot.sendMessage(update.message.chat.id, "☣️No se pudo eliminar el archivo...")
         elif '/del_' in msgText and user_info['cloudtype']=='moodle':
             findex = int(str(msgText).split('_')[1])
             proxy = ProxyCloud.parse(user_info['proxy'])
