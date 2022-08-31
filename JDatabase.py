@@ -39,21 +39,27 @@ class JsonDatabase(object):
                      'proxy':'',
                      'tokenize':0,
                      'rename':0,
+                     'xdlink':0,
+                     'urlshort':0,
+                     'channelid': '---',
                      'urlshort':0}
 
     def create_admin(self,name):
         self.items[name] = {'dir': '',
                      'cloudtype': 'moodle',
-                     'moodle_host': 'https://evea.uh.cu/',
+                     'moodle_host': '---',
                      'moodle_repo_id': 4,
-                     'moodle_user': '',
-                     'moodle_password': '',
+                     'moodle_user': '---',
+                     'moodle_password': '---',
                      'isadmin': 1,
-                     'zips': 240,
+                     'zips': 100,
                      'uploadtype':'calendar',
                      'proxy':'',
                      'tokenize':0,
                      'rename':0,
+                     'xdlink':0,
+                     'urlshort':0,
+                     'channelid': '---',
                      'urlshort':0}
 
     def remove(self,name):
