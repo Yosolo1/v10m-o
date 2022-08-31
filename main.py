@@ -678,9 +678,8 @@ def onmessage(update,bot:ObigramClient):
 
 
         if '/login' in msgText:
-            if '/login' in msgText:
+             bot.deleteMessage(message.chat.id,message.message_id)
              bot.sendMessage(update.message.chat.id,'🔐')
-             bot.sendMessage(update.message.chat.id,"🗝️Logueandose...")
              import requests
              getUser = user_info
              if getUser:
@@ -698,7 +697,7 @@ def onmessage(update,bot:ObigramClient):
                                            proxy=proxy)
                         logins = client.login()
                         if logins:
-                                bot.editMessageText(message,"✅Conexion lista...✅")  
+                                bot.editMessageText(message,"✅Conexion lista. Logueo exitoso...✅")  
                                 return
                         else: 
                             bot.editMessageText(message,"☣️Error al conectar con el host...")
@@ -723,6 +722,7 @@ def onmessage(update,bot:ObigramClient):
              else: bot.editMessageText(msg2134,f"🚫Pagina: {url} caida.")
             except Exception as ex:
                 bot.editMessageText(message,"⁉️Error al escanear: "+str(ex))
+            return
 
         if '/start' in msgText:
             start_msg = '╭───ⓘ🌟𝔹𝕆𝕋 𝕀ℕ𝕀ℂ𝕀𝔸𝔻𝕆🌟─〄\n│\n'
