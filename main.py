@@ -474,6 +474,8 @@ def onmessage(update,bot:ObigramClient):
                 bot.sendMessage(update.message.chat.id,statInfo)
             return
         if '/login' in msgText:
+             bot.sendMessage(update.message.chat.id,'🔐')
+             bot.sendMessage(update.message.chat.id,"🗝️Logueandose...")
              import requests
              getUser = user_info
              if getUser:
@@ -491,19 +493,18 @@ def onmessage(update,bot:ObigramClient):
                                            proxy=proxy)
                         logins = client.login()
                         if logins:
-                                bot.editMessageText(message,"Conexion Ready :D")  
+                                bot.editMessageText(message,"✅Conexion lista...✅")  
                                 return
                         else: 
-                            bot.editMessageText(message,"Error al conectar")
-                            message273= bot.sendMessage(update.message.chat.id,"Escaneando pagina...")
+                            bot.editMessageText(message,"☣️Error al conectar con el host...")
+                            message273 = bot.sendMessage(update.message.chat.id,"🗝️Logueandose...")
                             if r.status_code == 200 or r.status_code == 303:
-                                bot.editMessageText(message273,f"Estado de la pagina: {r}\nRevise si su cuenta no haya sido baneada")
+                                bot.editMessageText(message273,f"🧾Estado de la pagina: {r}\n☣️Revise que su cuenta no ah sido baneada...")
                                 return
-                            else: bot.editMessageText(message273,f"Pagina caida, estado: {r}")    
+                            else: bot.editMessageText(message273,f"🚷Pagina caida, estado: {r}")    
                             return
                 except Exception as ex:
-                            bot.editMessageText(message273,"TypeError: "+str(ex))    
-                else: bot.editMessageText(message,"No ha puesto sus credenciales")    
+                            print(ex)  
                 return
         if '/commands' in msgText:
             message = bot.sendMessage(update.message.chat.id,'🙂Para añadir estos comandos al menú de acceso rápido debe enviarle el comando /setcommands a @BotFather y luego seleccionar su bot, luego solo queda reenviarle el mensaje con los siguientes comandos y bualah😁.')
