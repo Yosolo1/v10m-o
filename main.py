@@ -595,32 +595,32 @@ def onmessage(update,bot:ObigramClient):
             except:
                 bot.sendMessage(update.message.chat.id,'⚠️Error en el comando /repo ID de la moodle⚠️')
             return
-     """
-        if '/tokenize_on' in msgText:
-            try:
-                getUser = user_info
-                if getUser:
-                    getUser['tokenize'] = 1
-                    jdb.save_data_user(username,getUser)
-                    jdb.save()
-                    statInfo = infos.createStat(username,getUser,jdb.is_admin(username))
-                    bot.sendMessage(update.message.chat.id,statInfo)
-            except:
-                bot.sendMessage(update.message.chat.id,'❌Error en el comando /tokenize state❌')
-            return
-        if '/tokenize_off' in msgText:
-            try:
-                getUser = user_info
-                if getUser:
-                    getUser['tokenize'] = 0
-                    jdb.save_data_user(username,getUser)
-                    jdb.save()
-                    statInfo = infos.createStat(username,getUser,jdb.is_admin(username))
-                    bot.sendMessage(update.message.chat.id,statInfo)
-            except:
-                bot.sendMessage(update.message.chat.id,'❌Error en el comando /tokenize state❌')
-            return
-     """
+     
+      #  if '/tokenize_on' in msgText:
+      #      try:
+       #         getUser = user_info
+        #        if getUser:
+       #             getUser['tokenize'] = 1
+        #            jdb.save_data_user(username,getUser)
+        #            jdb.save()
+        #            statInfo = infos.createStat(username,getUser,jdb.is_admin(username))
+       #             bot.sendMessage(update.message.chat.id,statInfo)
+       #     except:
+       #         bot.sendMessage(update.message.chat.id,'❌Error en el comando /tokenize state❌')
+        #    return
+     #   if '/tokenize_off' in msgText:
+      #      try:
+       #         getUser = user_info
+       #         if getUser:
+       #             getUser['tokenize'] = 0
+       #             jdb.save_data_user(username,getUser)
+       #             jdb.save()
+        #            statInfo = infos.createStat(username,getUser,jdb.is_admin(username))
+         #           bot.sendMessage(update.message.chat.id,statInfo)
+        #    except:
+        #        bot.sendMessage(update.message.chat.id,'❌Error en el comando /tokenize state❌')
+         #   return
+     
 
         if '/cloud' in msgText:
             try:
