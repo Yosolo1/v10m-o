@@ -292,8 +292,7 @@ def onmessage(update,bot:ObigramClient):
         except:pass
 
         # comandos de admin
-        if '/adduser' in msgText:
-           if '/add' in msgText:
+        if '/add' in msgText:
             isadmin = jdb.is_admin(username)
             if isadmin:
                 try:
@@ -905,6 +904,8 @@ def onmessage(update,bot:ObigramClient):
            try: 
             enlace = msgText.split('/delete')[-1]
             proxy = ProxyCloud.parse(user_info['proxy'])
+            bot.editMessageText(message,'🔐')
+            message = bot.sendMessage(update.message.chat.id,'🪛Logueandose para intentar eliminar el archivo...')
             client = MoodleClient(user_info['moodle_user'],
                                    user_info['moodle_password'],
                                    user_info['moodle_host'],
