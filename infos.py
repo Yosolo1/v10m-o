@@ -120,7 +120,7 @@ def createFilesMsg(evfiles):
     return msg
 def createStat(username,userdata,isadmin):
     from pyobigram.utils import sizeof_fmt
-    msg = '╭───ⓘ⚙️ℂ𝕆ℕ𝔽𝕀𝔾𝕌ℝ𝔸ℂ𝕀𝕆ℕ⚙️─〄\n│\n'
+    msg = '╭───ⓘ⚙️ℂ𝕆ℕ𝔽𝕀𝔾𝕌ℝ𝔸ℂ𝕀𝕆ℕ⚙️⟜─〄\n│\n'
     msg+= '├⊸Nombre: ༺@' + str(username)+'༻\n'
     msg+= '├⊸Usuario: ' + str(userdata['moodle_user'])+'\n'
     msg+= '├⊸Contraseña: ' + str(userdata['moodle_password']) +'\n'
@@ -133,6 +133,7 @@ def createStat(username,userdata,isadmin):
         msg+= '├⊸Directorio: /' + str(userdata['dir'])+'\n'
     msg+= '├⊸Tamaño de zips: ' + sizeof_fmt(userdata['zips']*1024*1024) + '\n'
     msg+= '├⊸Canal ID XDLinks: ' + str(userdata['channelid'])+'\n'
+    msg+= '│' + '\n'
     msg+= '│' + '\n'
     msgAdmin = '✘'
 
@@ -157,5 +158,5 @@ def createStat(username,userdata,isadmin):
        xdlink = '✔'
     msg+= '├⊸XDLinks: ' + xdlink + '\n'
     msg+= '│' + '\n'
-    msg+= '╰──ⓘSuperDownload 1.5🌟─〄\n\n'
+    msg+= '╰──ⓘSuperDownload 1.5🌟⟜─〄\n\n'
     return msg
