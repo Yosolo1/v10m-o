@@ -13,12 +13,12 @@ def text_progres(index,max,size=14,step_size=7):
         porcent = round(porcent)
         make_text = ''
         index_make = 1
-        make_text += '\n⟬'
+        make_text += '\n⦇'
         while(index_make<size):
             if porcent >= index_make * step_size:make_text+='⬛'
             else:make_text+='⬜'
             index_make+=1
-        make_text += '\n'
+        make_text += '⦈\n'
         return make_text
     except Exception as ex:
             return ''
