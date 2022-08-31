@@ -473,49 +473,7 @@ def onmessage(update,bot:ObigramClient):
                 statInfo = infos.createStat(username,getUser,jdb.is_admin(username))
                 bot.sendMessage(update.message.chat.id,statInfo)
             return
-        if '/login' in msgText:
-             bot.sendMessage(update.message.chat.id,'🔐')
-             import requests
-             getUser = user_info
-             if getUser:
-                user = getUser['moodle_user']
-                passw = getUser['moodle_password']
-                host = getUser['moodle_host']
-                proxy = getUser['proxy']
-                url = host
-                r = requests.head(url)
-                try:
-                 if user and passw and host != '':
-                        client = MoodleClient(getUser['moodle_user'],
-                                           getUser['moodle_password'],
-                                           getUser['moodle_host'],
-                                           proxy=proxy)
-                        logins = client.login()
-                        if logins:
-                                bot.editMessageText(message,"✅Conexion lista...✅")  
-                                return
-                        else: 
-                            bot.editMessageText(message,"☣️Error al conectar con el host...")
-                            message273 = bot.sendMessage(update.message.chat.id,"🗝️Logueandose...")
-                            if r.status_code == 200 or r.status_code == 303:
-                                bot.editMessageText(message273,f"🧾Estado de la pagina: {r}\n☣️Revise que su cuenta no ah sido baneada...")
-                                return
-                            else: bot.editMessageText(message273,f"🚷Pagina caida, estado: {r}")    
-                            return
-                except Exception as ex:
-                            print(ex)  
-                return
-        if '/watch' in msgText:
-            import requests
-            url = user_info['moodle_host']
-            msg2134 = bot.editMessageText(message,f"🔎Escaneando url guardado en info...")
-            try:
-             r = requests.head(url)
-             if r.status_code == 200 or r.status_code == 303:
-                bot.editMessageText(msg2134,f"✅Pagina: {url} activa.")
-             else: bot.editMessageText(msg2134,f"🚫Pagina: {url} caida.")
-            except Exception as ex:
-                bot.editMessageText(message,"⁉️Error al escanear: "+str(ex))
+
         if '/commands' in msgText:
             message = bot.sendMessage(update.message.chat.id,'🙂Para añadir estos comandos al menú de acceso rápido debe enviarle el comando /setcommands a @BotFather y luego seleccionar su bot, luego solo queda reenviarle el mensaje con los siguientes comandos y bualah😁.')
             comandos = open('comandos.txt','r')
@@ -717,6 +675,54 @@ def onmessage(update,bot:ObigramClient):
         message = bot.sendMessage(update.message.chat.id,'⏳𝙰𝙽𝙰𝙻𝙸𝚉𝙰𝙽𝙳𝙾...⌛')
 
         thread.store('msg',message)
+
+
+        if '/login' in msgText:
+            if '/login' in msgText:
+             bot.sendMessage(update.message.chat.id,'🔐')
+             bot.sendMessage(update.message.chat.id,"🗝️Logueandose...")
+             import requests
+             getUser = user_info
+             if getUser:
+                user = getUser['moodle_user']
+                passw = getUser['moodle_password']
+                host = getUser['moodle_host']
+                proxy = getUser['proxy']
+                url = host
+                r = requests.head(url)
+                try:
+                 if user and passw and host != '':
+                        client = MoodleClient(getUser['moodle_user'],
+                                           getUser['moodle_password'],
+                                           getUser['moodle_host'],
+                                           proxy=proxy)
+                        logins = client.login()
+                        if logins:
+                                bot.editMessageText(message,"✅Conexion lista...✅")  
+                                return
+                        else: 
+                            bot.editMessageText(message,"☣️Error al conectar con el host...")
+                            message273 = bot.sendMessage(update.message.chat.id,"🗝️Logueandose...")
+                            if r.status_code == 200 or r.status_code == 303:
+                                bot.editMessageText(message273,f"🧾Estado de la pagina: {r}\n☣️Revise que su cuenta no ah sido baneada...")
+                                return
+                            else: bot.editMessageText(message273,f"🚷Pagina caida, estado: {r}")    
+                            return
+                except Exception as ex:
+                            bot.editMessageText(message273,"☣️Tipo de error: "+str(ex))    
+                else: bot.editMessageText(message,"☣️No ha puesto sus credenciales.")    
+                return
+        if '/watch' in msgText:
+            import requests
+            url = user_info['moodle_host']
+            msg2134 = bot.editMessageText(message,f"🔎Escaneando url guardado en info...")
+            try:
+             r = requests.head(url)
+             if r.status_code == 200 or r.status_code == 303:
+                bot.editMessageText(msg2134,f"✅Pagina: {url} activa.")
+             else: bot.editMessageText(msg2134,f"🚫Pagina: {url} caida.")
+            except Exception as ex:
+                bot.editMessageText(message,"⁉️Error al escanear: "+str(ex))
 
         if '/start' in msgText:
             start_msg = '╭───ⓘ🌟𝔹𝕆𝕋 𝕀ℕ𝕀ℂ𝕀𝔸𝔻𝕆🌟─〄\n│\n'
