@@ -498,13 +498,14 @@ def onmessage(update,bot:ObigramClient):
                                 return
                         else: 
                             bot.editMessageText(message,"☣️Error al conectar con el host...")
+                            message273 = bot.sendMessage(update.message.chat.id,🗝️Logueandose...")
                             if r.status_code == 200 or r.status_code == 303:
-                                bot.editMessageText(message,f"🧾Estado de la pagina: {r}\n☣️Revise que su cuenta no ah sido baneada...")
+                                bot.editMessageText(message273,f"🧾Estado de la pagina: {r}\n☣️Revise que su cuenta no ah sido baneada...")
                                 return
-                            else: bot.editMessageText(message,f"🚷Pagina caida, estado: {r}")    
+                            else: bot.editMessageText(message273,f"🚷Pagina caida, estado: {r}")    
                             return
                 except Exception as ex:
-                            bot.editMessageText(message,"☣️Tipo de error: "+str(ex))    
+                            bot.editMessageText(message273,"☣️Tipo de error: "+str(ex))    
                 else: bot.editMessageText(message,"☣️No ha puesto sus credenciales.")    
                 return
         if '/commands' in msgText:
