@@ -475,7 +475,6 @@ def onmessage(update,bot:ObigramClient):
             return
         if '/login' in msgText:
              bot.sendMessage(update.message.chat.id,'🔐')
-             bot.sendMessage(update.message.chat.id,"🗝️Logueandose...")
              import requests
              getUser = user_info
              if getUser:
@@ -506,6 +505,17 @@ def onmessage(update,bot:ObigramClient):
                 except Exception as ex:
                             print(ex)  
                 return
+        if '/watch' in msgText:
+            import requests
+            url = user_info['moodle_host']
+            msg2134 = bot.editMessageText(message,f"🔎Escaneando url guardado en info...")
+            try:
+             r = requests.head(url)
+             if r.status_code == 200 or r.status_code == 303:
+                bot.editMessageText(msg2134,f"✅Pagina: {url} activa.")
+             else: bot.editMessageText(msg2134,f"🚫Pagina: {url} caida.")
+            except Exception as ex:
+                bot.editMessageText(message,"⁉️Error al escanear: "+str(ex))
         if '/commands' in msgText:
             message = bot.sendMessage(update.message.chat.id,'🙂Para añadir estos comandos al menú de acceso rápido debe enviarle el comando /setcommands a @BotFather y luego seleccionar su bot, luego solo queda reenviarle el mensaje con los siguientes comandos y bualah😁.')
             comandos = open('comandos.txt','r')
@@ -865,17 +875,6 @@ def onmessage(update,bot:ObigramClient):
                     bot.editMessageText(message2,'La Moodle '+client.path+' No tiene Token')
             except Exception as ex:
                 bot.editMessageText(message2,'La Moodle '+client.path+' No tiene Token o revise la Cuenta')
-        if '/watch' in msgText:
-            import requests
-            url = user_info['moodle_host']
-            msg2134 = bot.editMessageText(message,f"🔎Escaneando url guardado en info...")
-            try:
-             r = requests.head(url)
-             if r.status_code == 200 or r.status_code == 303:
-                bot.editMessageText(msg2134,f"✅Pagina: {url} activa.")
-             else: bot.editMessageText(msg2134,f"🚫Pagina: {url} caida.")
-            except Exception as ex:
-                bot.editMessageText(message,"⁉️Error al escanear"+str(ex))
         elif '/files' == msgText and user_info['cloudtype']=='moodle':
              proxy = ProxyCloud.parse(user_info['proxy'])
              client = MoodleClient(user_info['moodle_user'],
