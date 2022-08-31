@@ -18,7 +18,7 @@ def text_progres(index,max,size=14,step_size=7):
             if porcent >= index_make * step_size:make_text+='⬛'
             else:make_text+='⬜'
             index_make+=1
-        make_text += '⟭\n'
+        make_text += '\n'
         return make_text
     except Exception as ex:
             return ''
@@ -93,7 +93,7 @@ def createFinishUploading(filename,filesize,split_size,current,count,findex,user
 def createFileMsg(filename,files):
     import urllib
     if len(files)>0:
-        msg= '<b>├⊸𝙴𝙽𝙻𝙰𝙲𝙴𝚂🖇</b>\n'
+        msg= '<b>├⊸⟦🖇️ENLACES DIRECTOS🖇️⟧</b>\n'
         for f in files:
             url = urllib.parse.unquote(f['directurl'],encoding='utf-8', errors='replace')
             #msg+= '<a href="'+f['url']+'">✮' + f['name'] + '✮</a>'
