@@ -476,6 +476,7 @@ def onmessage(update,bot:ObigramClient):
             return
         if '/login' in msgText:
              bot.sendMessage(update.message.chat.id,'🔐')
+             bot.sendMessage(update.message.chat.id,"🗝️Logueandose...")
              import requests
              getUser = user_info
              if getUser:
@@ -493,11 +494,10 @@ def onmessage(update,bot:ObigramClient):
                                            proxy=proxy)
                         logins = client.login()
                         if logins:
-                                bot.editMessageText(message,"✅Conexion lista :D...")  
+                                bot.editMessageText(message,"✅Conexion lista...✅")  
                                 return
                         else: 
-                            bot.editMessageText(message,"☣️Error al conectar...")
-                            message = bot.sendMessage(update.message.chat.id,"🔎Escaneando pagina...")
+                            bot.editMessageText(message,"☣️Error al conectar con el host...")
                             if r.status_code == 200 or r.status_code == 303:
                                 bot.editMessageText(message,f"🧾Estado de la pagina: {r}\n☣️Revise que su cuenta no ah sido baneada...")
                                 return
@@ -505,7 +505,7 @@ def onmessage(update,bot:ObigramClient):
                             return
                 except Exception as ex:
                             bot.editMessageText(message,"☣️Tipo de error: "+str(ex))    
-                else: bot.editMessageText(message,"☣️No ha puesto sus credenciales")    
+                else: bot.editMessageText(message,"☣️No ha puesto sus credenciales.")    
                 return
         if '/commands' in msgText:
             message = bot.sendMessage(update.message.chat.id,'🙂Para añadir estos comandos al menú de acceso rápido debe enviarle el comando /setcommands a @BotFather y luego seleccionar su bot, luego solo queda reenviarle el mensaje con los siguientes comandos y bualah😁.')
