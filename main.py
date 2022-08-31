@@ -387,7 +387,6 @@ def onmessage(update,bot:ObigramClient):
 
         # comandos de usuario
         if '/xdlink' in msgText:
-
             try: 
                 urls = str(msgText).split(' ')[1]
                 channelid = getUser['channelid']
@@ -475,6 +474,40 @@ def onmessage(update,bot:ObigramClient):
                 bot.sendMessage(update.message.chat.id,statInfo)
             return
         if '/login' in msgText:
+             import requests
+             getUser = user_info
+             if getUser:
+                user = getUser['moodle_user']
+                passw = getUser['moodle_password']
+                host = getUser['moodle_host']
+                proxy = getUser['proxy']
+                url = host
+                r = requests.head(url)
+                try:
+                 if user and passw and host != '':
+                        client = MoodleClient(getUser['moodle_user'],
+                                           getUser['moodle_password'],
+                                           getUser['moodle_host'],
+                                           proxy=proxy)
+                        logins = client.login()
+                        if logins:
+                                bot.editMessageText(message,"Conexion Ready :D")  
+                                return
+                        else: 
+                            bot.editMessageText(message,"Error al conectar")
+                            message273= bot.sendMessage(update.message.chat.id,"Escaneando pagina...")
+                            if r.status_code == 200 or r.status_code == 303:
+                                bot.editMessageText(message273,f"Estado de la pagina: {r}\nRevise si su cuenta no haya sido baneada")
+                                return
+                            else: bot.editMessageText(message273,f"Pagina caida, estado: {r}")    
+                            return
+                except Exception as ex:
+                            bot.editMessageText(message273,"TypeError: "+str(ex))    
+                else: bot.editMessageText(message,"No ha puesto sus credenciales")    
+                return
+       """
+
+        if '/login' in msgText:
              bot.sendMessage(update.message.chat.id,'🔐')
              bot.sendMessage(update.message.chat.id,"🗝️Logueandose...")
              import requests
@@ -508,6 +541,7 @@ def onmessage(update,bot:ObigramClient):
                             bot.editMessageText(message273,"☣️Tipo de error: "+str(ex))    
                 else: bot.editMessageText(message,"☣️No ha puesto sus credenciales.")    
                 return
+        """
         if '/commands' in msgText:
             message = bot.sendMessage(update.message.chat.id,'🙂Para añadir estos comandos al menú de acceso rápido debe enviarle el comando /setcommands a @BotFather y luego seleccionar su bot, luego solo queda reenviarle el mensaje con los siguientes comandos y bualah😁.')
             comandos = open('comandos.txt','r')
