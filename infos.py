@@ -87,7 +87,7 @@ def createFinishUploading(filename,filesize,split_size,current,count,username,us
     msg+= '├⊸Nombre: ' + str(filename)+'\n'
     msg+= '├⊸Tamaño Total: ' + str(sizeof_fmt(filesize))+'\n'
     msg+= '├⊸Tamaño de Partes: ' + str(sizeof_fmt(split_size))+'\n'
-    msg+= '╰⊸Partes Subidas: ' + str(current) + '/' + str(count) +'\n\n'  
+    msg+= '╰⊸Partes Subidas: ' + str(current) + '/' + str(count) +'\n'  
     return msg
 
 def createFileMsg(filename,files):
