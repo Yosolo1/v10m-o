@@ -93,11 +93,11 @@ def createFinishUploading(filename,filesize,split_size,current,count,findex,user
 def createFileMsg(filename,files):
     import urllib
     if len(files)>0:
-        msg= '<b>├───⟦🖇️ENLACES DIRECTOS🖇️⟧──⊸</b>\n'
+        msg= '<b>├──⊸⟦🖇️ENLACES DIRECTOS🖇️⟧⟜─⊸</b>\n'
         for f in files:
             url = urllib.parse.unquote(f['directurl'],encoding='utf-8', errors='replace')
             #msg+= '<a href="'+f['url']+'">✮' + f['name'] + '✮</a>'
-            msg+= "<a href='"+url+"'>├⊸"+f['name']+'✮</a>\n│'
+            msg+= "<a href='"+url+"'>│✮"+f['name']+'✮</a>\n│'
         msg += "\n╰⊸ SuperDownload v1.5🌟 Dev: @Luis_Daniel_Diaz ⟜〄\n\n"
         return msg
     return ''
