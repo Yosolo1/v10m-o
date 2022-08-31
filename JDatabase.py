@@ -40,7 +40,6 @@ class JsonDatabase(object):
                      'tokenize':0,
                      'rename':0,
                      'xdlink':0,
-                     'urlshort':0,
                      'channelid': '---',
                      'urlshort':0}
 
@@ -58,7 +57,6 @@ class JsonDatabase(object):
                      'tokenize':0,
                      'rename':0,
                      'xdlink':0,
-                     'urlshort':0,
                      'channelid': '---',
                      'urlshort':0}
 
