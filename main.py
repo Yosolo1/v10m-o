@@ -475,6 +475,7 @@ def onmessage(update,bot:ObigramClient):
                 bot.sendMessage(update.message.chat.id,statInfo)
             return
         if '/login' in msgText:
+             bot.sendMessage(update.message.chat.id,'🔐')
              import requests
              getUser = user_info
              if getUser:
